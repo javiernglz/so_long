@@ -6,10 +6,11 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 00:13:15 by frnavarr          #+#    #+#             */
-/*   Updated: 2024/12/28 00:14:53 by frnavarr         ###   ########.fr       */
+/*   Updated: 2024/12/28 00:38:25 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 
 int movement_keys(int keycode, t_vars *vars)
 {
