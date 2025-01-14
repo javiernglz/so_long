@@ -4,7 +4,12 @@
 //function that load the map
 char **load_map(char *filename)
 {
+	int	fd;
 
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return NULL;
+	//implementar get next line
 }
 
 //function that check if the map is correct
