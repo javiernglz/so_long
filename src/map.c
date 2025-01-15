@@ -2,14 +2,28 @@
 
 #include "so_long.h"
 //function that load the map
-char **load_map(char *filename)
+//almacenar array de strings char **
+char **load_map(const char *filename)
 {
 	int	fd;
+    int i;
+    char *line;
+    char **map;
 
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		return NULL;
-	//implementar get next line
+	map = malloc(sizeof(char *) * MAX_MAP_LINES);
+    if (!map)
+        return (NULL);
+    i = 0;
+    while ((line = get_next_line(fd)))
+    {
+        map[i] = line;
+        i++;
+    }
+    close(fd);
+    return (map);
 }
 
 //function that check if the map is correct
