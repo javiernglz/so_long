@@ -6,13 +6,38 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 00:45:43 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/15 00:38:35 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:35:54 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 
-int main(void)
+#include "so_long.h"
+
+int main(int argc, char **argv)
+{
+    t_game game;
+
+    if (argc != 2)
+    {
+        write(2, "Usage: ./so_long <map_file.ber>\n", 32);
+        return (1);
+    }
+
+    // Inicializar el juego
+    init_game(&game, argv[1]); // Carga mapa, inicializa MinilibX, y estructura
+
+    // Renderizar el mapa inicial (función a implementar más tarde)
+    render_map(&game);
+
+    // Comenzar el bucle de eventos
+    mlx_loop(game.mlx);
+
+    return (0);
+}
+
+
+/* int main()
 {
     void *mlx;
     void *win;
@@ -27,3 +52,4 @@ int main(void)
     mlx_loop(mlx);
     return (0);
 }
+ */
