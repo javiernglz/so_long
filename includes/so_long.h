@@ -6,17 +6,17 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 00:35:32 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/24 13:16:32 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:02:38 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define TILE_SIZE 32  // Tamaño de cada "tile" (cuadro)
 # define WIN_WIDTH 640 // Ancho de la ventana
 # define WIN_HEIGHT 480 // Alto de la ventana
 # define TILE_SIZE 64 // Tamaño de cada tile en píxeles
+# define MAX_MAP_LINES 100
 
 #include <fcntl.h>
 #include <unistd.h>
@@ -52,7 +52,7 @@ typedef struct s_game
 
 }	t_game;
 
-void init_game(t_game *game, char *map_path);
-void render_map(t_game *game);
+void	init_game(t_game *game, const char *map_file);
+void	draw_map(t_game *game);
 
 #endif

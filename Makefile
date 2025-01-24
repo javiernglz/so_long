@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-SRCS = main.c # Cambiar esto por los archivos .c
+CFLAGS = -Wall -Wextra -Werror -I./includes -I./minilibx/minilibx-linux
+SRCS = src/main.c src/init_game.c src/draw_map.c
 OBJS = $(SRCS:.c=.o)
 MLX = ./minilibx/minilibx-linux/
 MLX_FLAGS = -L$(MLX) -lmlx -lX11 -lXext -lm -lz

@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:39 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/24 10:43:45 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:55:54 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	init_game(t_game *game, const char *map_file)
     }
 
 	// Crear una ventana con el tamaño del mapa
-    game->win = mlx_new_window(game->mlx, game->map_width * 32,
-                               game->map_height * 32, "so_long");
+    game->win = mlx_new_window(game->mlx, game->map_width * 64,
+                               game->map_height * 64, "so_long");
     if (!game->win)
     {
         write(2, "Error: Failed to create window\n", 31);
