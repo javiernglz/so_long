@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 00:35:32 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/17 16:45:18 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:44:54 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 #include <stdio.h>
 #include "mlx.h" // Include MinilibX
 
-
 typedef struct s_game
 {
 	void	*mlx;
@@ -33,8 +32,11 @@ typedef struct s_game
 	int		map_height;
 	int		player_pos_x;
 	int		player_pos_y;
-	int		coins;
 	int		moves;
+	void	*player_sprite;
+	void	*wall_sprite;
+	void	*coin_sprite;
+	void	*exit_sprite;
 }	t_game;
 
 void init_game(t_game *game, char *map_path);

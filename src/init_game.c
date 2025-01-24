@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:39 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/17 16:34:07 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:43:45 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,23 @@ void	init_game(t_game *game, const char *map_file)
         write(2, "Error: Failed to create window\n", 31);
         exit(1); // Salir si hay error
     }
+}
+
+void	load_sprites(t_game *game)
+{
+	int	width;
+	int	height;
+
+	// Carga cada sprite en la estructura
+	game->player_sprite = mlx_xpm_file_to_image(game->mlx, "sprites/player.xpm", &width, &height);
+	game->wall_sprite = mlx_xpm_file_to_image(game->mlx, "sprites/wall.xpm", &width, &height);
+	game->coin_sprite = mlx_xpm_file_to_image(game->mlx, "sprites/coin.xpm", &width, &height);
+	game->exit_sprite = mlx_xpm_file_to_image(game->mlx, "sprites/exit.xpm", &width, &height);
+
+	// Verifica que se cargaron correctamente
+	if (!game->player_sprite || !game->wall_sprite || !game->coin_sprite || !game->exit_sprite)
+	{
+		perror("Error cargando los sprites");
+		exit(EXIT_FAILURE);
+	}
 }
