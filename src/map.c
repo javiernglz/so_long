@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:19:32 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/17 16:19:36 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:57:24 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char **load_map(const char *filename)
 
 //function that check if the map is correct
 
-int validate_map(char **map)
+/* int validate_map(char **map)
 {
     int i;
     int j;
@@ -75,4 +75,77 @@ int validate_map(char **map)
     if (player_count != 1 || exit_count != 1 || coin_count < 1)
         return (0);
     return (1); // valid map
+} */
+
+#include <stdio.h>
+#include <string.h>
+
+int validate_map(char **map)
+{
+    int i, j;
+    int player_count = 0, exit_count = 0, coin_count = 0;
+
+    // Verificar las paredes del contorno (superior, inferior, izquierdo, derecho)
+    for (i = 0; map[i]; i++)
+    {
+        for (j = 0; map[i][j]; j++)
+        {
+            // Verificar la primera y última fila
+            if (i == 0 || map[i + 1] == NULL)
+            {
+                if (map[i][j] != '1') // Las paredes deben ser '1' en las primeras y últimas filas
+                {
+                    printf("Error en el contorno en la posición (%d, %d): %c\n", i, j, map[i][j]);
+                    return (0); // Mapa inválido
+                }
+            }
+            if (map[i][j + 1] == '\0' && map[i][j] != '1')
+            {
+                printf("Error en el contorno en la posición (%d, %d): %c\n", i, j, map[i][j]);
+                return (0); // Mapa inválido
+            }
+            // Verificar las primeras y últimas columnas de cada fila
+            if (j == 0 || map[i][j + 1] == '\0')
+            {
+                if (map[i][j] != '1') // Las paredes deben ser '1' en las primeras y últimas columnas
+                {
+                    printf("Error en el contorno en la posición (%d, %d): %c\n", i, j, map[i][j]);
+                    return (0); // Mapa inválido
+                }
+            }
+        }
+    }
+
+    // Verificar que el mapa sea rectangular (todas las filas deben tener el mismo número de columnas)
+    size_t	row_length = strlen(map[0]);
+    for (i = 1; map[i]; i++)
+    {
+        if (strlen(map[i]) != row_length)
+        {
+            printf("Error: El mapa no es rectangular, diferencia en la fila %d\n", i);
+            return 0; // Mapa no rectangular
+        }
+    }
+
+    // Verificar la cantidad de P (jugador), E (salida) y C (monedas)
+    for (i = 0; map[i]; i++)
+    {
+        for (j = 0; map[i][j]; j++)
+        {
+            if (map[i][j] == 'P') // Jugador
+                player_count++;
+            else if (map[i][j] == 'E') // Salida
+                exit_count++;
+            else if (map[i][j] == 'C') // Monedas
+                coin_count++;
+        }
+    }
+
+    if (player_count != 1 || exit_count != 1 || coin_count < 1)
+    {
+        printf("Error: El mapa debe tener un jugador ('P'), una salida ('E') y al menos una moneda ('C').\n");
+        return (0); // Mapa inválido si no hay un jugador, una salida y al menos una moneda
+    }
+
+    return (1); // Mapa válido
 }

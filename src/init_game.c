@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:39 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/24 15:55:54 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:40:44 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_game(t_game *game, const char *map_file)
 {
+	// Cargar el mapa
 	game->map = load_map(map_file);
 	if(!game->map || !validate_map(game->map))
 	{
@@ -37,6 +38,15 @@ void	init_game(t_game *game, const char *map_file)
         write(2, "Error: Failed to create window\n", 31);
         exit(1); // Salir si hay error
     }
+	else
+	{
+    	write(1, "Window created successfully!\n", 28);  // Mensaje de depuración
+	}
+	// Dibujar algo simple para asegurarse de que la ventana se ve
+    mlx_string_put(game->mlx, game->win, 10, 10, 0xFFFFFF, "Hello, So Long!");
+
+    // Mantener la ventana abierta
+    mlx_loop(game->mlx);
 }
 
 void	load_sprites(t_game *game)
