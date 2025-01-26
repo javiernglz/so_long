@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 00:35:32 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/24 16:02:38 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:28:41 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ typedef struct s_game
 
 void	init_game(t_game *game, const char *map_file);
 void	draw_map(t_game *game);
+char 	*get_next_line(int fd);
+char 	**load_map(const char *map_file);
+int 	validate_map(char **map);
+
 
 #endif
