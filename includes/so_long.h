@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 00:35:32 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/26 21:28:41 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:38:09 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void	draw_map(t_game *game);
 char 	*get_next_line(int fd);
 char 	**load_map(const char *map_file);
 int 	validate_map(char **map);
-
+int     ft_strlen(const char *str);
+char    *ft_strdup(const char *s1);
+char    *ft_strjoin(char const *s1, char const *s2);
+int     search_nline(const char *s, int c);
+void    *ft_calloc(size_t count, size_t size);
+char    *ft_strchr(const char *s, int c);
 
 #endif
