@@ -5,92 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 00:45:43 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/01/26 23:15:34 by frnavarr         ###   ########.fr       */
+/*   Created: 2025/02/03 13:22:54 by frnavarr          #+#    #+#             */
+/*   Updated: 2025/02/07 00:27:58 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-#define BUFFER_SIZE 32
-
-// Declaración de la función get_next_line
-char *get_next_line(int fd);
-
 int main(int argc, char **argv)
 {
-    int     fd;
-    char    *line;
-
-    if (argc != 2)
-    {
-        write(2, "Usage: ./so_long <map_file>\n", 27);
-        return (1);
-    }
-
-    // Abrir el archivo pasado como argumento
-    fd = open(argv[1], O_RDONLY);
-    if (fd < 0)
-    {
-        write(2, "Error opening file\n", 19);
-        return (1);
-    }
-
-    // Leer las líneas del archivo
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line); // Imprimir cada línea
-        free(line);          // Liberar la memoria de cada línea después de imprimirla
-    }
-
-    // Cerrar el archivo
-    close(fd);
-
-    return (0);
-}
-
-
-/* int main(int argc, char **argv)
-{
     t_game game;
-
-    if (argc != 2)
-    {
-        write(2, "Usage: ./so_long <map.ber>\n", 28);
+	
+	if (argc < 2)
+	{
+        printf("Uso: %s <mapa>\n", argv[0]);
         return (1);
     }
+    // Inicializo
+    game.mlx = mlx_init();
+    game.map = load_map(argv[1]);
 
-    // Inicializar el juego
-    init_game(&game, argv[1]); // Carga mapa, inicializa MinilibX, y estructura
+	if (!game.map)
+	{
+        printf("Error al cargar el mapa: %s\n", argv[1]);
+        return (1);  // Salir si hay error al cargar el mapa
+    }
 
-    // Renderizar el mapa inicial (función a implementar más tarde)
-    draw_map(&game);
+    first_player_position(&game);
+    game.images.player_img = game.images.player_abajo_img;
+    game.win = mlx_new_window(game.mlx, MAP_WIDTH * TILE_SIZE, MAP_HEIGHT * TILE_SIZE, "So Long Game");
 
-    // Comenzar el bucle de eventos
+    load_sprites_elements(game.mlx, &game.images);
+    load_sprites_players(game.mlx, &game.images);
+
+    draw_map(game.mlx, game.win, &game.images, game.map);
+
+    // Captura las teclas
+    mlx_hook(game.win, 2, 1L << 0, arrow_keys, &game); // Captura las teclas
+   // mlx_loop_hook(game.mlx, loop_hook, &game);
+
+    // Bucle principal de mlx
     mlx_loop(game.mlx);
 
     return (0);
 }
- */
-
-/* int main()
-{
-    void *mlx;
-    void *win;
-	
-	//initialize MinilibX
-    mlx = mlx_init();
-    if (!mlx)
-        return (1);
-    win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "so_long");
-    if (!win)
-        return (1);
-    mlx_loop(mlx);
-    return (0);
-}
- */
