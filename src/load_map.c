@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 00:20:04 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/02/07 00:26:54 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:26:15 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	load_sprites_players(void *mlx,t_images *images)
 	images->player_izq_img = mlx_xpm_file_to_image(mlx, "./sprites/player_izq.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
 	images->player_dcha_img = mlx_xpm_file_to_image(mlx, "./sprites/player_dcha.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
 	if (!images->player_dcha_img || !images->player_izq_img || !images->player_abajo_img || !images->player_up_img)
-		error_exit("Error al cargar la imagen derecha del jugador");
+		error_exit("Error al cargar la imagen del jugador");
 
 	images->player_img = images->player_up_img;
 }

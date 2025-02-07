@@ -11,14 +11,8 @@ LIBS = $(LIBFT) -L./minilibx/minilibx-linux -lmlx -lX11 -lXext -lm
 
 all: libft $(NAME)
 
-#so_long sin bonus
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(OBJS) $(LIBS) -o $(NAME)
-
-#con bonus
-$(BONUS_NAME): $(BONUS_OBJS) $(LIBFT)
-	@echo "Compilando la versión bonus..."
-	$(CC) $(BONUS_OBJS) $(LIBFT) $(LIBS) -o $(BONUS_NAME)
 
 $(LIBFT):
 	make -C libft

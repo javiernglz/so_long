@@ -32,21 +32,11 @@ typedef struct s_images {
 	void	*coin_img;
 } t_images;
 
-typedef struct s_player {
-    int x;
-    int y;
-    int direction;
-    void *current_img;
-} t_player;
-
 typedef struct s_game {
     void		*mlx;
     void		*win;
     char		**map;
     t_images	images;
-	t_player	player;
-/*   int			player_x;
-    int			player_y; */
 	int			move_count;
 	int			moves;
 	int			exit;
@@ -58,16 +48,15 @@ typedef struct s_game {
 	int			player_count;
 } t_game;
 
-void error_exit(char *message);
-char **load_map(const char *filename);
-void load_sprites(void *mlx, t_images *images);
-void draw_map(void *mlx, void *window, t_images *images, char **map);
-void move_player(t_game *game, int delta_y, int delta_x);
-void first_player_position(t_game *game);
-int	arrow_keys(int keycode, t_game *game);
-//void display_moves(t_game *game);
-void render_move_count(t_game *game);
-void end_game(t_game *game);
+void	error_exit(char *message);
+char	**load_map(const char *filename);
+void	load_sprites(void *mlx, t_images *images);
+void	draw_map(void *mlx, void *window, t_images *images, char **map);
+void	move_player(t_game *game, int delta_y, int delta_x);
+void	first_player_position(t_game *game);
+int		arrow_keys(int keycode, t_game *game);
+void	render_move_count(t_game *game);
+void 	end_game(t_game *game);
 void	load_sprites_elements(void *mlx, t_images *images);
 void	load_sprites_players(void *mlx, t_images *images);
 

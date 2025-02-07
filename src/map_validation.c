@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_map_validation.c                             :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 00:08:05 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/02/06 21:12:15 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:25:30 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	first_player_position(t_game *game)
 		pos = ft_strchr(game->map[y], 'P');
 		if (pos)
 		{
-			game->player.x = pos - game->map[y];
-			game->player.y = y;
+			game->px = pos - game->map[y];
+			game->py = y;
 			return;
 		}
 		y++;

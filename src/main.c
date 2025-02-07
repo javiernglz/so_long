@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:22:54 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/02/07 00:27:58 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:25:58 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ int main(int argc, char **argv)
         printf("Uso: %s <mapa>\n", argv[0]);
         return (1);
     }
-    // Inicializo
     game.mlx = mlx_init();
     game.map = load_map(argv[1]);
 
 	if (!game.map)
 	{
         printf("Error al cargar el mapa: %s\n", argv[1]);
-        return (1);  // Salir si hay error al cargar el mapa
+        return (1); 
     }
 
     first_player_position(&game);
@@ -39,12 +38,8 @@ int main(int argc, char **argv)
     load_sprites_players(game.mlx, &game.images);
 
     draw_map(game.mlx, game.win, &game.images, game.map);
+    mlx_hook(game.win, 2, 1L << 0, arrow_keys, &game);
 
-    // Captura las teclas
-    mlx_hook(game.win, 2, 1L << 0, arrow_keys, &game); // Captura las teclas
-   // mlx_loop_hook(game.mlx, loop_hook, &game);
-
-    // Bucle principal de mlx
     mlx_loop(game.mlx);
 
     return (0);
