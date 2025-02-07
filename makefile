@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Ilibft -I./src -I./src_b -I./minilibx/minilibx-linux -I./includes -I./libft
 RM = rm -f
 LIBFT = libft/libft.a
-SRCS = src/solong.c src/load_map.c src/map_validation.c src/movements.c src/main.c
+SRCS = src/solong.c src/load_map.c src/map_validation.c src/movements.c src/check_road.c src/main.c
 OBJS = $(SRCS:.c=.o)
 
 # Librerías para el enlazado

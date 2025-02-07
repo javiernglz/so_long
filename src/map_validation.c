@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 00:08:05 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/02/07 11:25:30 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:05:33 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	first_player_position(t_game *game)
 		{
 			game->px = pos - game->map[y];
 			game->py = y;
+			printf("Jugador encontrado en: x = %d, y = %d\n", game->px, game->py);
 			return;
 		}
 		y++;

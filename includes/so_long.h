@@ -46,6 +46,8 @@ typedef struct s_game {
 	int			px;
 	int			py;
 	int			player_count;
+	int			height;
+	int			width;
 } t_game;
 
 void	error_exit(char *message);
@@ -59,5 +61,6 @@ void	render_move_count(t_game *game);
 void 	end_game(t_game *game);
 void	load_sprites_elements(void *mlx, t_images *images);
 void	load_sprites_players(void *mlx, t_images *images);
+bool check_road(t_game *game);
 
 #endif

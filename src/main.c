@@ -6,7 +6,7 @@
 /*   By: frnavarr <frnavarr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:22:54 by frnavarr          #+#    #+#             */
-/*   Updated: 2025/02/07 11:25:58 by frnavarr         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:06:07 by frnavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int main(int argc, char **argv)
         printf("Error al cargar el mapa: %s\n", argv[1]);
         return (1); 
     }
-
     first_player_position(&game);
+	if (!check_road(&game))
+    exit(EXIT_FAILURE);
+
     game.images.player_img = game.images.player_abajo_img;
     game.win = mlx_new_window(game.mlx, MAP_WIDTH * TILE_SIZE, MAP_HEIGHT * TILE_SIZE, "So Long Game");
 
